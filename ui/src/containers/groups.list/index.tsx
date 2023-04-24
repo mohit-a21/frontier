@@ -1,9 +1,10 @@
 import { EmptyState, Flex, Table } from "@odpf/apsara";
 import { Outlet, useOutletContext, useParams } from "react-router-dom";
 import useSWR from "swr";
+import { fetcher } from "~/api";
 import { tableStyle } from "~/styles";
 import { Group } from "~/types/group";
-import { fetcher, reduceByKey } from "~/utils/helper";
+import { reduceByKey } from "~/utils/helper";
 import { getColumns } from "./columns";
 import { GroupsHeader } from "./header";
 

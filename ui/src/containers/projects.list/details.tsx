@@ -8,10 +8,11 @@ import {
 } from "@odpf/apsara";
 import { ColumnDef } from "@tanstack/table-core";
 import useSWR from "swr";
+import { fetcher } from "~/api";
 import { DialogHeader } from "~/components/dialog/header";
 import DialogTable from "~/components/DialogTable";
 import { User } from "~/types/user";
-import { fetcher } from "~/utils/helper";
+
 import { useProject } from ".";
 
 type DetailsProps = {

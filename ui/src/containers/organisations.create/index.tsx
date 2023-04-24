@@ -23,7 +23,7 @@ import * as z from "zod";
 import { useCallback } from "react";
 import { FormProvider, useForm, UseFormRegister } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { updateOrganisation } from "~/api";
+import { update } from "~/api";
 import { SheetFooter } from "~/components/sheet/footer";
 import { SheetHeader } from "~/components/sheet/header";
 import { capitalizeFirstLetter } from "~/utils/helper";
@@ -42,10 +42,11 @@ const OrganizationSchema = z.object({
 export type OrganizationForm = z.infer<typeof OrganizationSchema>;
 
 export default function NewOrganisation() {
+  console.log("dsds");
   const navigate = useNavigate();
   const { trigger } = useSWRMutation(
     "/admin/v1beta1/organizations",
-    updateOrganisation,
+    update,
     {}
   );
 

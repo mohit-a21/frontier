@@ -8,10 +8,10 @@ import {
 } from "@odpf/apsara";
 import { ColumnDef } from "@tanstack/table-core";
 import useSWR from "swr";
+import { fetcher } from "~/api";
 import { DialogHeader } from "~/components/dialog/header";
 import DialogTable from "~/components/DialogTable";
 import { User } from "~/types/user";
-import { fetcher } from "~/utils/helper";
 import { useOrganisation } from ".";
 
 type DetailsProps = {
@@ -46,11 +46,16 @@ export const projectColumns: ColumnDef<User, any>[] = [
 
 export default function OrganisationDetails() {
   const { organisation } = useOrganisation();
+  if (!organisation?.id) return null;
+
   const { data: usersData } = useSWR(
     `/admin/v1beta1/organizations/${organisation?.id}/users`,
     fetcher
   );
-  const { data: projectsData } = useSWR("/admin/v1beta1/projects", fetcher);
+  const { data: projectsData } = useSWR(
+    `/admin/v1beta1/organizations/${organisation?.id}/projects`,
+    fetcher
+  );
   const { users = [] } = usersData || { users: [] };
   const { projects = [] } = projectsData || { projects: [] };
 

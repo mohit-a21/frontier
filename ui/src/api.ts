@@ -1,17 +1,12 @@
-export async function update(
-  url: string,
-  { arg }: { arg: Record<string, string> }
-) {
-  await fetch(url, {
-    method: "POST",
+// @ts-ignore
+export const fetcher = (args) =>
+  fetch(args, {
     headers: {
       "X-Shield-Email": "admin@odpf.io",
     },
-    body: JSON.stringify(arg),
-  });
-}
+  }).then((res) => res.json());
 
-export async function updateOrganisation(
+export async function update(
   url: string,
   { arg }: { arg: Record<string, string> }
 ) {

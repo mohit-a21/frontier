@@ -24,11 +24,11 @@ import * as z from "zod";
 import { useCallback } from "react";
 import { FormProvider, useForm, UseFormRegister } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { update } from "~/api";
+import { fetcher, update } from "~/api";
 import { SheetFooter } from "~/components/sheet/footer";
 import { SheetHeader } from "~/components/sheet/header";
 import { Organisation } from "~/types/organisation";
-import { capitalizeFirstLetter, fetcher } from "~/utils/helper";
+import { capitalizeFirstLetter } from "~/utils/helper";
 
 const GroupSchema = z.object({
   name: z
